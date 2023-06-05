@@ -32,11 +32,13 @@ const db = {
     ]
 };
 
+const cors = require('cors');
 const server = jsonServer.create();
+server.use(cors());
 const router = jsonServer.router(db);
 const middlewares = jsonServer.defaults();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const state = { velocity: {}, blocked: {} };
 
